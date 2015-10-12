@@ -1,0 +1,4 @@
+-e git://github.com/codeKonami/BitBucket-api.git
+Fabric==1.10.1
+paramiko==1.15.2
+termcolor==1.1.0
