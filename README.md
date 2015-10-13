@@ -1,4 +1,4 @@
-# Fabric Genuine.js
+# Fabric Genuine.js 1.0.1
 
 This repo will help you create your repos, deploy them directly onto your
 staging and production servers and keep them updated as you want.
