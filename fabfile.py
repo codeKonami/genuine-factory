@@ -91,8 +91,7 @@ def construct():
             run("""echo "export NODE_ENV_%s_port=""$(cat /tmp/port)" >> /etc/environment""" % (app_name))
             port = run("cat /tmp/port")
             run("git checkout -b develop origin/develop")
-            run("npm install")
-            run("npm rebuild node-sass")
+            run("npm install --production")
             run("gulp sass")
             run("gulp js")
             print ("Launching")
@@ -146,7 +145,7 @@ def _deploy(environment = 'staging'):
         with cd("/home/%s/public" % (app_name)):
             run("git stash")
             run("git pull")
-            run("npm install")
+            run("npm install --production")
             run("gulp sass")
             run("gulp js")
             run("forever restart %s" % (app_name))
@@ -188,7 +187,7 @@ def _rollback(rollback_type = "commit", revert = "1", environment = 'staging'):
                 run("git reset --hard HEAD~%s" % (revert))
             elif(rollback_type == "version" or rollback_type == "sha"):
                 run("git reset --hard %s" % (revert))
-            run("npm install")
+            run("npm install --production")
             run("gulp sass")
             run("gulp js")
             run("forever restart %s" % (app_name))
